@@ -148,12 +148,12 @@
             The following plugins are ordered according the Maven build lifecycle.
             http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
             -->
-<!--             <plugin>
-                
+            <plugin>
+                <!--
                 Checks that the version of user's maven installation is 3.0.4,
                 the JDK is 1.5+, no non-standard repositories are specified in
                 the project, requires only release versions of dependencies of other artifacts.
-               
+                -->
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>1.4</version>
                 <executions>
@@ -167,7 +167,7 @@
                             <fail>true</fail>
                             <rules>
                                 <requireMavenVersion>
-                                    Some plugin features require a recent Maven runtime to work properly
+                                    <!-- Some plugin features require a recent Maven runtime to work properly -->
                                     <message>Current version of Maven ${maven.version} required to build the project
                                         should be ${project.prerequisites.maven}, or higher!
                                     </message>
@@ -190,7 +190,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
             <plugin>
                 <!--
                 Updates Version#id().
@@ -199,12 +199,12 @@
                 <artifactId>replacer</artifactId>
                 <version>1.5.3</version>
                 <executions>
-                    <!-- <execution>
+                    <execution>
                         <phase>process-sources</phase>
                         <goals>
                             <goal>replace</goal>
                         </goals>
-                    </execution> -->
+                    </execution>
                 </executions>
                 <configuration>
                     <ignoreMissingFile>false</ignoreMissingFile>
@@ -455,7 +455,13 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-        </plugins>
+			<!--  PMD 플러그인 -->
+		    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+		        <version>3.11.0</version>
+			</plugin>
+			</plugins>
     </reporting>
 
     <profiles>
